@@ -10,16 +10,16 @@
 # wsj0_origin=/home/ktxu/workspace/data/CSR-I-WSJ0-LDC93S6A
 # wsj0_wav=/home/ktxu/workspace/data/wsj0-wav/wsj0
 data='/work/b07u1234/data_public/HW3_1_Data/min'
-stage=1 # Modify this to control to start from which stage
+stage=2 # Modify this to control to start from which stage
 # -- END
 
 dumpdir=data_best  # directory to put generated json file
 
 # -- START Conv-TasNet Config
-train_dir=$dumpdir/tr_best
-valid_dir=$dumpdir/cv_best
-evaluate_dir=$dumpdir/tt_best
-separate_dir=$dumpdir/tt_best
+train_dir=$dumpdir/tr
+valid_dir=$dumpdir/cv
+evaluate_dir=$dumpdir/tt
+separate_dir=$dumpdir/tt
 sample_rate=8000
 segment=4  # seconds
 cv_maxlen=6  # seconds
