@@ -13,13 +13,13 @@ data='/work/b07u1234/data_public/HW3_1_Data/min'
 stage=1 # Modify this to control to start from which stage
 # -- END
 
-dumpdir=data  # directory to put generated json file
+dumpdir=data_best  # directory to put generated json file
 
 # -- START Conv-TasNet Config
-train_dir=$dumpdir/tr
-valid_dir=$dumpdir/cv
-evaluate_dir=$dumpdir/tt
-separate_dir=$dumpdir/tt
+train_dir=$dumpdir/tr_best
+valid_dir=$dumpdir/cv_best
+evaluate_dir=$dumpdir/tt_best
+separate_dir=$dumpdir/tt_best
 sample_rate=8000
 segment=4  # seconds
 cv_maxlen=6  # seconds
@@ -58,7 +58,7 @@ continue_from=""
 print_freq=10
 visdom=1
 visdom_epoch=1
-visdom_id="Conv-TasNet Training"
+visdom_id="Conv-TasNet Training Best"
 # evaluate
 ev_use_cuda=1
 cal_sdr=1
@@ -105,9 +105,9 @@ fi
 
 
 if [ -z ${tag} ]; then
-  expdir=exp/train_r${sample_rate}_N${N}_L${L}_B${B}_H${H}_P${P}_X${X}_R${R}_C${C}_${norm_type}_causal${causal}_${mask_nonlinear}_epoch${epochs}_half${half_lr}_norm${max_norm}_bs${batch_size}_worker${num_workers}_pit${pit}_${optimizer}_lr${lr}_mmt${momentum}_l2${l2}_`basename $train_dir`
+  expdir=exp/train_best_r${sample_rate}_N${N}_L${L}_B${B}_H${H}_P${P}_X${X}_R${R}_C${C}_${norm_type}_causal${causal}_${mask_nonlinear}_epoch${epochs}_half${half_lr}_norm${max_norm}_bs${batch_size}_worker${num_workers}_pit${pit}_${optimizer}_lr${lr}_mmt${momentum}_l2${l2}_`basename $train_dir`
 else
-  expdir=exp/train_${tag}
+  expdir=exp/train_best_${tag}
 fi
 
 if [ $stage -le 2 ]; then
@@ -160,7 +160,7 @@ if [ $stage -le 3 ]; then
   echo "Stage 3: Evaluate separation performance"
   ${decode_cmd} --gpu ${ngpu} ${expdir}/evaluate.log \
     evaluate.py \
-    --model_path ${expdir}/final.pth.tar \
+    --model_path ${expdir}/final_best.pth.tar \
     --data_dir $evaluate_dir \
     --cal_sdr $cal_sdr \
     --use_cuda $ev_use_cuda \
@@ -172,11 +172,11 @@ fi
 
 if [ $stage -le 4 ]; then
   echo "Stage 4: Separate speech using Conv-TasNet"
-  separate_out_dir=${expdir}/separate
-  ${decode_cmd} --gpu ${ngpu} ${separate_out_dir}/separate.log \
+  separate_out_dir=${expdir}/separate_best
+  ${decode_cmd} --gpu ${ngpu} ${separate_out_dir}/separate_best.log \
     separate.py \
-    --model_path ${expdir}/final.pth.tar \
-    --mix_json $separate_dir/mix.json \
+    --model_path ${expdir}/final_best.pth.tar \
+    --mix_json $separate_dir/mix_best.json \
     --out_dir ${separate_out_dir} \
     --use_cuda $ev_use_cuda \
     --sample_rate $sample_rate \
