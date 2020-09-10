@@ -8,7 +8,7 @@ import argparse
 import torch
 
 from data import AudioDataLoader, AudioDataset
-from solver import Solver
+from solver import *
 from conv_tasnet import ConvTasNet
 
 
@@ -138,7 +138,7 @@ def main(args):
     # solver
     solver = Solver(data, model, optimizier, args)
     solver.train()
-
+    print(PIT_Count)
 
 if __name__ == '__main__':
     args = parser.parse_args()
