@@ -67,7 +67,7 @@ cal_sdr=1
 # exp tag
 tag="" # tag for managing experiments.
 
-ngpu=1  # always 1
+ngpu=2  # always 1
 
 . utils/parse_options.sh || exit 1;
 . ./cmd.sh
