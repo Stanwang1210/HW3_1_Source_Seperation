@@ -38,7 +38,7 @@ C=2
 # Training config
 use_cuda=1
 id=0
-epochs=100
+epochs=30
 half_lr=1
 early_stop=1
 max_norm=5
