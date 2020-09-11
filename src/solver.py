@@ -8,7 +8,7 @@ import torch
 
 from pit_criterion import cal_loss
 PIT_Count = []
-Index_record = torch.tensor([1])
+# Index_record = torch.tensor([1])
 
 class Solver(object):
     
@@ -183,14 +183,15 @@ class Solver(object):
                 cal_loss(padded_source, estimate_source, mixture_lengths, self.pit)
 
             # PIT switch
+            
             try :
-                assert PIT_Count[i] >= 0
-                if Index_record[i] == reorder_estimate_source:
-                    PIT_Count[i] += 1
-                    Index_record[i] = reorder_estimate_source
+                assert PIT_Count[i] 
+                if PIT_Count[i][1] != reorder_estimate_source:
+                    PIT_Count[i][0] += 1
+                    Index_record[i][1] = reorder_estimate_source
             except :
-                Index_record.append(reorder_estimate_source)
-                PIT_Count.append(0)
+                # Index_record.append(reorder_estimate_source)
+                PIT_Count.append([0,reorder_estimate_source])
 
             if not cross_valid:
                 self.optimizer.zero_grad()
