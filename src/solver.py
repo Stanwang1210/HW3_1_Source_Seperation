@@ -184,12 +184,12 @@ class Solver(object):
 
             # PIT switch
             try :
-                assert Index_record[i] >= 0
+                assert PIT_Count[i] >= 0
                 if Index_record[i] == reorder_estimate_source:
                     PIT_Count[i] += 1
-                    Index_record = reorder_estimate_source
+                    Index_record[i] = reorder_estimate_source
             except :
-                Index_record[i] = reorder_estimate_source
+                Index_record.append(reorder_estimate_source)
                 PIT_Count.append(0)
 
             if not cross_valid:
