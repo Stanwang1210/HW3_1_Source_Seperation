@@ -22,7 +22,7 @@ evaluate_dir=$dumpdir/tt
 separate_dir=$dumpdir/tt
 sample_rate=8000
 segment=4  # seconds
-cv_maxlen=6  # seconds
+cv_maxlen=5  # seconds
 # Network config
 N=128
 L=40
