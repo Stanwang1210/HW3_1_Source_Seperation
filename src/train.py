@@ -138,7 +138,7 @@ def main(args):
     # solver
     solver = Solver(data, model, optimizier, args)
     solver.train()
-    print(PIT_Count)
+    print("PIT_Count is ", PIT_Count)
 
 if __name__ == '__main__':
     args = parser.parse_args()

@@ -8,7 +8,7 @@ import torch
 
 from pit_criterion import cal_loss
 PIT_Count = []
-Index_record = None
+Index_record = torch.tensor([1])
 
 class Solver(object):
     
@@ -184,6 +184,7 @@ class Solver(object):
 
             # PIT switch
             try :
+                assert Index_record[i] >= 0
                 if Index_record[i] == reorder_estimate_source:
                     PIT_Count[i] += 1
                     Index_record = reorder_estimate_source
