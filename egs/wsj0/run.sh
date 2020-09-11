@@ -45,8 +45,8 @@ max_norm=5
 pit=1
 # minibatch
 shuffle=1
-batch_size=30
-num_workers=8
+batch_size=100
+num_workers=16
 # optimizer
 optimizer=adam
 lr=1e-3
