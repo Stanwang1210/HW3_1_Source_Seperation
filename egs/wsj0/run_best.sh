@@ -175,8 +175,8 @@ if [ $stage -le 4 ]; then
   separate_out_dir=${expdir}/separate_best
   ${decode_cmd} --gpu ${ngpu} ${separate_out_dir}/separate_best.log \
     separate.py \
-    --model_path ${expdir}/final_best.pth.tar \
-    --mix_json $separate_dir/mix_best.json \
+    --model_path ${expdir}/final.pth.tar \
+    --mix_json $separate_dir/mix.json \
     --out_dir ${separate_out_dir} \
     --use_cuda $ev_use_cuda \
     --sample_rate $sample_rate \
