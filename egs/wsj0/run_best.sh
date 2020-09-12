@@ -160,7 +160,7 @@ if [ $stage -le 3 ]; then
   echo "Stage 3: Evaluate separation performance"
   ${decode_cmd} --gpu ${ngpu} ${expdir}/evaluate.log \
     evaluate.py \
-    --model_path ${expdir}/final_best.pth.tar \
+    --model_path ${expdir}/final.pth.tar \
     --data_dir $evaluate_dir \
     --cal_sdr $cal_sdr \
     --use_cuda $ev_use_cuda \
