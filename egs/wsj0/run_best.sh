@@ -56,8 +56,8 @@ l2=0
 checkpoint=0
 continue_from=""
 print_freq=10
-visdom=1
-visdom_epoch=1
+visdom=0
+visdom_epoch=0
 visdom_id="Conv-TasNet Training Best"
 # evaluate
 ev_use_cuda=1
